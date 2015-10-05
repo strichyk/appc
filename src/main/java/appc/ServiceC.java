@@ -26,15 +26,20 @@ public class ServiceC implements IServiceC {
 	
 	@Override
 	public int jumble(int leftOne, int rightOne, int leftTwo, int rightTwo) {
-		String serviceCclientId = "9aa19969-286b-43a5-9e04-4069530e6560";
+		//String serviceCclientId = "9aa19969-286b-43a5-9e04-4069530e6560";
+		String serviceCclientId = "f3e5071e-c778-4754-8641-c682be436367";
 
-		String url = "https://api.apim.ibmcloud.com/bluemixtraininganzgmailcom-dev/sb";
+		//String url = "https://api.apim.ibmcloud.com/bluemixtraininganzgmailcom-dev/sb";
+		String url = "https://api.apim.ibmcloud.com/strichykyahoocomau-dev/sb";
+		System.out.println(url + "/ServiceAService");
+		LOGGER.info(url + "/ServiceAService");
 		
 		Map<String, List<String>> serviceARequestHeaders = new HashMap<String, List<String>>();
 		serviceARequestHeaders.put("X-IBM-Client-Id", Collections.singletonList(serviceCclientId));
 
 		IServiceA serviceA = new ServiceAService().getServiceAPort();
 		((BindingProvider)serviceA).getRequestContext().put(MessageContext.HTTP_REQUEST_HEADERS, serviceARequestHeaders);
+		System.out.println(BindingProvider.ENDPOINT_ADDRESS_PROPERTY +":" + url + "/ServiceAService");
 		((BindingProvider)serviceA).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, url + "/ServiceAService");
 		
 		IServiceB serviceB = new ServiceBService().getServiceBPort();
